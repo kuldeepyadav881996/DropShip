@@ -115,6 +115,36 @@ img { display: block; max-width: 100%; }
 @keyframes stripShimmer { 0%{background-position:0%} 100%{background-position:200%} }
 .top-strip strong { color: #06110b; background: #fff4c4; padding: 2px 8px; border-radius: 6px; }
 
+/* Success Stories Ticker */
+.success-ticker {
+  position: relative; width: 100%; overflow: hidden;
+  background: #0a0d14; border-bottom: 1px solid rgba(247,184,36,0.18);
+  padding: 10px 0;
+}
+.success-ticker::before, .success-ticker::after {
+  content: ""; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none;
+}
+.success-ticker::before { left: 0; background: linear-gradient(90deg, #0a0d14 0%, transparent 100%); }
+.success-ticker::after { right: 0; background: linear-gradient(-90deg, #0a0d14 0%, transparent 100%); }
+.success-ticker-track {
+  display: flex; align-items: center; gap: 0; width: max-content;
+  animation: tickerScroll 45s linear infinite;
+}
+.success-ticker:hover .success-ticker-track { animation-play-state: paused; }
+.success-ticker-item {
+  display: inline-flex; align-items: center; gap: 8px; padding: 0 28px;
+  color: #ffd98e; font-size: 13px; font-weight: 600; white-space: nowrap;
+}
+.success-ticker-item b { color: #fff4c4; font-weight: 800; }
+.success-ticker-item::before {
+  content: "•"; margin-right: 10px; color: rgba(247,184,36,0.5); font-size: 16px;
+}
+.success-ticker-item:first-child::before { content: none; }
+@keyframes tickerScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@media (max-width: 740px) {
+  .success-ticker-item { padding: 0 18px; font-size: 12px; }
+}
+
 /* Header */
 .site-header {
   position: sticky; top: 0; z-index: 50; display: flex; align-items: center;
@@ -421,6 +451,84 @@ nav a:hover { color: #f7b824; }
 .audience-card.hot { border-color: rgba(20,168,255,0.55); background: linear-gradient(145deg, rgba(20,168,255,0.12), rgba(247,184,36,0.06)); }
 .audience-card small { display: inline-flex; margin-top: 18px; padding: 6px 10px; border-radius: 8px; color: #ffdf78; background: rgba(247,184,36,0.13); font-weight: 900; }
 
+/* ======= 30-DAY ROADMAP (PREMIUM TIMELINE) ======= */
+.roadmap-intro { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin: 0 auto 40px; }
+.roadmap-badge {
+  display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px;
+  border: 1px solid rgba(247,184,36,0.3); background: rgba(247,184,36,0.08);
+  color: #ffdf78; font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px;
+}
+.roadmap-weeks { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; width: min(1240px, 100%); margin: 0 auto; }
+.week-card {
+  position: relative; padding: 28px 22px 24px; border-radius: 16px;
+  border: 1px solid rgba(247,184,36,0.18);
+  background: linear-gradient(160deg, rgba(255,255,255,0.045) 0%, rgba(255,255,255,0.015) 100%);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.week-card:hover { transform: translateY(-6px); border-color: rgba(247,184,36,0.5); box-shadow: 0 24px 64px rgba(247,184,36,0.18), inset 0 1px 0 rgba(255,255,255,0.08); }
+.week-card .week-tag {
+  display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; margin-bottom: 16px;
+  border-radius: 999px; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 1.2px;
+  color: #06110b; background: linear-gradient(135deg, #ffd86b, #f7b824);
+}
+.week-card h3 { margin: 0 0 6px; font-size: 19px; color: #fff; }
+.week-card .week-range { display: block; margin-bottom: 16px; color: #f7b824; font-size: 12px; font-weight: 800; letter-spacing: 0.5px; }
+.week-card ul { display: grid; gap: 11px; margin: 0; padding: 0; list-style: none; }
+.week-card li { display: flex; gap: 10px; align-items: flex-start; color: #c7c0ad; font-size: 13px; line-height: 1.55; }
+.week-card li::before { content: "▸"; flex-shrink: 0; color: #24d56a; font-weight: 900; margin-top: 1px; }
+.week-card.week-2 .week-tag { background: linear-gradient(135deg, #5fe0ff, #14a8ff); }
+.week-card.week-3 .week-tag { background: linear-gradient(135deg, #b39bff, #8b74ff); }
+.week-card.week-4 .week-tag {
+  background: linear-gradient(135deg, #ffd86b, #f7b824); color:#06110b;
+}
+.week-card.week-4 { border-color: rgba(247,184,36,0.45); background: linear-gradient(160deg, rgba(247,184,36,0.1) 0%, rgba(255,255,255,0.015) 100%); box-shadow: 0 18px 50px rgba(247,184,36,0.15), inset 0 1px 0 rgba(255,255,255,0.08); }
+
+.roadmap-outcome {
+  width: min(1000px, 100%); margin: 44px auto 0; padding: 26px 30px; border-radius: 16px;
+  display: flex; align-items: center; justify-content: center; gap: 16px; text-align: center; flex-wrap: wrap;
+  border: 1px solid rgba(36,213,106,0.35);
+  background: linear-gradient(135deg, rgba(36,213,106,0.1), rgba(20,168,255,0.06));
+  color: #d9ffe9; font-size: 15px; font-weight: 700;
+}
+.roadmap-outcome b { color: #4bf08a; }
+
+@media (max-width: 1100px) { .roadmap-weeks { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .roadmap-weeks { grid-template-columns: 1fr; } }
+
+/* ======= URGENCY: SEATS COUNTER ======= */
+.seats-bar {
+  width: min(1180px, 100%); margin: 0 auto 32px; padding: 16px 24px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap;
+  background: linear-gradient(135deg, rgba(255,60,60,0.1), rgba(255,160,0,0.08));
+  border: 1px solid rgba(255,90,60,0.35); color: #ffd9c2; font-size: 13px; font-weight: 800;
+}
+.seats-bar .seats-count { color: #ff7a4a; font-family: "Bebas Neue", sans-serif; font-size: 20px; letter-spacing: 1px; }
+.seats-progress { width: 220px; height: 8px; border-radius: 99px; background: rgba(255,255,255,0.08); overflow: hidden; flex-shrink: 0; }
+.seats-progress span { display: block; height: 100%; width: 86%; border-radius: 99px; background: linear-gradient(90deg, #ff5b6c, #f7b824); animation: seatsFill 1.6s ease both; }
+@keyframes seatsFill { from { width: 0%; } to { width: 86%; } }
+
+/* ======= URGENCY: LIVE ACTIVITY TOAST ======= */
+.activity-toast {
+  position: fixed; left: 18px; bottom: 18px; z-index: 39; display: flex; align-items: center; gap: 12px;
+  padding: 12px 18px; border-radius: 12px; max-width: 320px;
+  background: rgba(10,12,18,0.85); border: 1px solid rgba(247,184,36,0.3);
+  backdrop-filter: blur(14px); box-shadow: 0 16px 50px rgba(0,0,0,0.5);
+  transform: translateY(120%); opacity: 0; transition: transform 0.5s cubic-bezier(0.22,1,0.36,1), opacity 0.5s ease;
+}
+.activity-toast.show { transform: translateY(0); opacity: 1; }
+.activity-toast .at-icon {
+  display: grid; place-items: center; width: 38px; height: 38px; flex-shrink: 0; border-radius: 50%;
+  background: linear-gradient(135deg, #ffd86b, #f7b824); font-size: 17px;
+}
+.activity-toast .at-text { font-size: 12.5px; line-height: 1.5; color: #f0efe8; }
+.activity-toast .at-text b { color: #f7b824; }
+.activity-toast .at-text span { display: block; margin-top: 2px; color: #7a7468; font-size: 11px; }
+@media (max-width: 600px) {
+  .activity-toast { left: 12px; right: 12px; max-width: none; bottom: 78px; }
+}
+
 /* PLANS - GOLDEN THEME (matched to site) */
 .plans-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; align-items: start; width: min(1180px, 100%); margin: 0 auto; }
 .plans-section { position: relative; overflow: hidden; color: #fffaf0; background: transparent; border-color: rgba(247,184,36,0.1) !important; }
@@ -657,6 +765,26 @@ footer { border-top: 1px solid rgba(247,184,36,0.18); background: linear-gradien
 .plan-amazon::after { background: linear-gradient(90deg, transparent, rgba(255,153,0,0.7), transparent); }
 .plan-amazon-com { border-color: rgba(20,100,255,0.6); box-shadow: 0 26px 80px rgba(20,100,255,0.2),inset 0 1px 0 rgba(20,100,255,0.15); }
 
+/* ======= MASTERY COURSE ACCENTS ======= */
+.plan-course-wa { border-color: rgba(37,211,102,0.5); }
+.plan-course-wa::after { background: linear-gradient(90deg, transparent, rgba(37,211,102,0.6), transparent); }
+.plan-course-social { border-color: rgba(225,48,108,0.5); }
+.plan-course-social::after { background: linear-gradient(90deg, transparent, rgba(225,48,108,0.6), transparent); }
+.plan-course-market { border-color: rgba(167,88,220,0.5); }
+.plan-course-market::after { background: linear-gradient(90deg, transparent, rgba(167,88,220,0.6), transparent); }
+.plan-course-amazon { border-color: rgba(255,153,0,0.6); }
+.plan-course-amazon::after { background: linear-gradient(90deg, transparent, rgba(255,153,0,0.7), transparent); }
+.plan-course-web { border-color: rgba(20,168,255,0.55); }
+.plan-course-web::after { background: linear-gradient(90deg, transparent, rgba(20,168,255,0.6), transparent); }
+
+/* Course cards: compact price block + description */
+.course-card .plan-price { font-size: clamp(34px, 4vw, 46px); margin-bottom: 4px; }
+.course-card .plan-old-price { font-size: 13px; color: #a09a8c; margin-bottom: 18px; }
+.course-card .plan-desc { margin: -4px 0 0; padding: 0 0 18px; color: #c7c0ad; font-size: 13px; line-height: 1.6; text-align: center; border-bottom: 1px solid rgba(247,184,36,0.2); }
+.course-card ul { padding-top: 18px; margin-top: 18px; gap: 12px; }
+.course-card li { font-size: 12.5px; }
+.course-card { min-height: 560px; }
+
 @media (max-width: 1100px) { .plans-grid-6 { grid-template-columns: repeat(3,1fr); } }
 @media (max-width: 740px)  { .plans-grid-6 { grid-template-columns: 1fr; } }
 
@@ -780,6 +908,29 @@ footer { border-top: 1px solid rgba(247,184,36,0.18); background: linear-gradien
   <img src="logo.png" alt="" class="logo-inline" onerror="this.style.display='none'"> 🎉 Limited Offer: Get your store setup at <strong>50% OFF</strong> this month only!
 </div>
 
+<!-- Success Stories Ticker -->
+<div class="success-ticker">
+  <div class="success-ticker-track" id="successTicker">
+    <span class="success-ticker-item"><b>Karan (Hyderabad)</b> student hote hue ₹35,000 kamaaye 💼</span>
+    <span class="success-ticker-item"><b>Meena (Lucknow)</b> ka Amazon store 3rd din se orders lene laga 🛒</span>
+    <span class="success-ticker-item"><b>Vikram (Chandigarh)</b> part-time mein ₹80,000 mahine mein 🔥</span>
+    <span class="success-ticker-item"><b>Anil (Delhi)</b> ne ₹42,000 pehle mahine mein kamaaye 💰</span>
+    <span class="success-ticker-item"><b>Priya (Pune)</b> ne 15 din mein apna Instagram store launch kiya 📸</span>
+    <span class="success-ticker-item"><b>Rohit (Surat)</b> ka WhatsApp business 1 hafte mein orders lene laga 💬</span>
+    <span class="success-ticker-item"><b>Sneha (Jaipur)</b> ne first sale 5th din par hi paayi 🎉</span>
+    <span class="success-ticker-item"><b>Amit (Indore)</b> ne Meesho se ₹28,000 first month mein kamaaye 🛍️</span>
+    <!-- duplicate set for seamless loop -->
+    <span class="success-ticker-item"><b>Karan (Hyderabad)</b> student hote hue ₹35,000 kamaaye 💼</span>
+    <span class="success-ticker-item"><b>Meena (Lucknow)</b> ka Amazon store 3rd din se orders lene laga 🛒</span>
+    <span class="success-ticker-item"><b>Vikram (Chandigarh)</b> part-time mein ₹80,000 mahine mein 🔥</span>
+    <span class="success-ticker-item"><b>Anil (Delhi)</b> ne ₹42,000 pehle mahine mein kamaaye 💰</span>
+    <span class="success-ticker-item"><b>Priya (Pune)</b> ne 15 din mein apna Instagram store launch kiya 📸</span>
+    <span class="success-ticker-item"><b>Rohit (Surat)</b> ka WhatsApp business 1 hafte mein orders lene laga 💬</span>
+    <span class="success-ticker-item"><b>Sneha (Jaipur)</b> ne first sale 5th din par hi paayi 🎉</span>
+    <span class="success-ticker-item"><b>Amit (Indore)</b> ne Meesho se ₹28,000 first month mein kamaaye 🛍️</span>
+  </div>
+</div>
+
 <!-- Header -->
 <header class="site-header">
   <a href="index.html" class="brand">
@@ -793,6 +944,7 @@ footer { border-top: 1px solid rgba(247,184,36,0.18); background: linear-gradien
     <a href="#categories">Categories</a>
     <a href="#roadmap">Roadmap</a>
     <a href="#plans">Plans</a>
+    <a href="#courses">Courses</a>
     <a href="#reviews">Reviews</a>
     <a href="#faq">FAQ</a>
     <a href="consultation.html" class="nav-cta">Get Started</a>
@@ -800,9 +952,18 @@ footer { border-top: 1px solid rgba(247,184,36,0.18); background: linear-gradien
 </header>
 
 <!-- Floating WhatsApp -->
-<a href="https://wa.me/91XXXXXXXXXX" class="float-wa" target="_blank">
+<a href="https://wa.me/917428329102" class="float-wa" target="_blank">
   💬 <small>Chat with us</small>
 </a>
+
+<!-- Live Activity Toast (urgency / social proof) -->
+<div class="activity-toast" id="activityToast">
+  <div class="at-icon">🔥</div>
+  <div class="at-text" id="activityText">
+    <b>Rohan from Delhi</b> just enrolled in the Instagram &amp; Facebook Mastery Course
+    <span>2 minutes ago</span>
+  </div>
+</div>
 
 <!-- Hero -->
 <section class="hero">
@@ -822,7 +983,7 @@ footer { border-top: 1px solid rgba(247,184,36,0.18); background: linear-gradien
       <p class="hero-launch-note">⚡ Dropshipping business launched in 10 minutes max!</p>
       <div class="hero-actions">
         <a href="consultation.html" class="btn primary">🚀 Start Selling Today</a>
-        <a href="https://wa.me/91XXXXXXXXXX" class="btn ghost" target="_blank">📞 Call Now</a>
+        <a href="https://wa.me/917428329102" class="btn ghost" target="_blank">📞 Call Now</a>
       </div>
     </div>
 
@@ -1265,21 +1426,95 @@ footer { border-top: 1px solid rgba(247,184,36,0.18); background: linear-gradien
   </div>
 </section>
 
-<!-- ROADMAP -->
+<!-- 30-DAY ROADMAP -->
 <section class="process-section section reveal" id="roadmap">
   <div class="section-head">
-    <span class="pill">Your Journey</span>
-    <h2>From Zero To First Sale</h2>
-    <p>A clear 5-step roadmap we walk through with you.</p>
+    <span class="pill">Your 30-Day Journey</span>
+    <h2>From Zero To Your First Sale</h2>
+    <p>A complete, day-by-day 30-day action plan we walk through with you — from setup to your first real orders.</p>
   </div>
-  <div class="steps">
-    <div class="step"><b>01</b><h3>Free Consultation</h3><p>We understand your goals and budget on a free call.</p></div>
-    <div class="step"><b>02</b><h3>Niche & Products</h3><p>We research and pick winning products for you.</p></div>
-    <div class="step"><b>03</b><h3>Store Setup</h3><p>Your complete store is built and launched.</p></div>
-    <div class="step"><b>04</b><h3>Marketing</h3><p>We set up ads & strategies to drive your first orders.</p></div>
-    <div class="step"><b>05</b><h3>Scale & Earn</h3><p>Ongoing support to grow your monthly income.</p></div>
+
+  <div class="roadmap-intro">
+    <span class="roadmap-badge">📅 30 Days · 4 Weeks</span>
+    <span class="roadmap-badge">🎯 Goal: First Sale Within 30 Days</span>
+    <span class="roadmap-badge">🤝 1-on-1 Support Included</span>
+  </div>
+
+  <div class="roadmap-weeks">
+
+    <!-- Week 1 -->
+    <div class="week-card week-1">
+      <span class="week-tag">Week 1 · Foundation</span>
+      <h3>Setup &amp; Research</h3>
+      <span class="week-range">Day 1 – Day 7</span>
+      <ul>
+        <li>Free 1-on-1 consultation call to understand your goals &amp; budget</li>
+        <li>Niche selection &amp; winning product research</li>
+        <li>Supplier sourcing &amp; pricing finalization</li>
+        <li>Business profile setup (WhatsApp / Instagram / Marketplace)</li>
+        <li>Store / page branding — logo, bio, theme</li>
+        <li>Domain &amp; basic store structure ready</li>
+      </ul>
+    </div>
+
+    <!-- Week 2 -->
+    <div class="week-card week-2">
+      <span class="week-tag">Week 2 · Build</span>
+      <h3>Store &amp; Listings Go Live</h3>
+      <span class="week-range">Day 8 – Day 14</span>
+      <ul>
+        <li>Full store / catalog setup with product listings</li>
+        <li>Product titles, descriptions &amp; images optimized for SEO</li>
+        <li>Payment gateway &amp; order process connected</li>
+        <li>WhatsApp auto-reply &amp; broadcast lists configured</li>
+        <li>Social media content calendar created</li>
+        <li>Store goes LIVE and is ready to take orders</li>
+      </ul>
+    </div>
+
+    <!-- Week 3 -->
+    <div class="week-card week-3">
+      <span class="week-tag">Week 3 · Launch</span>
+      <h3>Traffic &amp; First Orders</h3>
+      <span class="week-range">Day 15 – Day 21</span>
+      <ul>
+        <li>Ad campaigns launched (Meta / Google Ads)</li>
+        <li>Organic content &amp; reels posted with viral hooks</li>
+        <li>Hashtag &amp; outreach strategy executed</li>
+        <li>Daily order &amp; inquiry monitoring with you</li>
+        <li>First customer messages &amp; orders start coming in</li>
+        <li>Quick fixes &amp; A/B testing on ads and listings</li>
+      </ul>
+    </div>
+
+    <!-- Week 4 -->
+    <div class="week-card week-4">
+      <span class="week-tag">Week 4 · Scale</span>
+      <h3>Optimize &amp; Grow Income</h3>
+      <span class="week-range">Day 22 – Day 30</span>
+      <ul>
+        <li>Performance review — what's working, what to scale</li>
+        <li>Budget reallocation to best-performing products/ads</li>
+        <li>Customer feedback &amp; review collection system</li>
+        <li>Repeat customer &amp; retention strategy set up</li>
+        <li>Growth roadmap for Month 2 handed to you</li>
+        <li>Final mentorship call — you're ready to scale on your own</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="roadmap-outcome">
+    🚀 By <b>Day 30</b>, your business is fully live, generating real orders, and you have a clear growth plan to keep scaling — <b>with full support from our team every step of the way.</b>
   </div>
 </section>
+
+<!-- URGENCY: LIMITED SEATS -->
+<div class="seats-bar">
+  <span>⚡ Only <span class="seats-count">14 / 100</span> onboarding slots left this month</span>
+  <div class="seats-progress"><span></span></div>
+  <span>Prices increase once slots are full!</span>
+</div>
 
 <!-- PLANS -->
 <section class="plans-section section reveal" id="plans">
@@ -1450,6 +1685,131 @@ footer { border-top: 1px solid rgba(247,184,36,0.18); background: linear-gradien
 
 </section>
 
+<!-- MASTERY COURSES -->
+<section class="plans-section section reveal" id="courses">
+  <div class="section-head">
+    <span class="pill">Mastery Courses</span>
+    <h2>Step-by-Step Learning Courses</h2>
+    <p>Affordable, beginner-friendly courses to master every platform — from WhatsApp to your own ecommerce website.</p>
+  </div>
+  <div class="plans-urgency">
+    <span class="urgency-dot"></span>
+    <span>Limited time launch price —</span>
+    <span class="urgency-timer" id="timer2">23:59:59</span>
+  </div>
+
+  <div class="plans-row-wrap">
+    <div class="plans-row-inner">
+
+      <!-- ELITE - WhatsApp Business Mastery -->
+      <div class="plan-card course-card plan-course-wa">
+        <div class="plan-tag">ELITE</div>
+        <div class="plan-platform-icon">💬</div>
+        <h3>WhatsApp Business<br>Mastery Course</h3>
+        <div class="plan-price"><span class="currency">₹</span>149</div>
+        <div class="plan-old-price">One-Time · Only ₹149</div>
+        <p class="plan-desc">Learn how to turn WhatsApp into your business tool.</p>
+        <ul>
+          <li>WhatsApp Business Setup</li>
+          <li>Professional Business Profile</li>
+          <li>Auto Reply Setup</li>
+          <li>Product Catalog Creation</li>
+          <li>Customer Label Management</li>
+          <li>Broadcast Marketing</li>
+          <li>Order Taking Process</li>
+          <li>Payment Link Sharing</li>
+        </ul>
+        <a href="consultation.html">Get This Course →</a>
+      </div>
+
+      <!-- STARTER - Instagram & Facebook Mastery -->
+      <div class="plan-card course-card plan-course-social popular">
+        <div class="plan-tag">STARTER</div>
+        <div class="plan-platform-icon">📸</div>
+        <h3>Instagram &amp; Facebook<br>Mastery Course</h3>
+        <div class="plan-price"><span class="currency">₹</span>199</div>
+        <div class="plan-old-price">One-Time · Only ₹199</div>
+        <p class="plan-desc">Build your brand and attract customers organically.</p>
+        <ul>
+          <li>Professional Page Setup</li>
+          <li>Bio Optimization</li>
+          <li>Content Strategy</li>
+          <li>Reel Upload Guide</li>
+          <li>Viral Hooks</li>
+          <li>Hashtag Strategy</li>
+          <li>Organic Growth Basics</li>
+          <li>Business Profile Optimization</li>
+        </ul>
+        <a href="consultation.html">Get This Course →</a>
+      </div>
+
+      <!-- GROWTH - Meesho, Amazon & Flipkart Mastery -->
+      <div class="plan-card course-card plan-course-market">
+        <div class="plan-tag">GROWTH</div>
+        <div class="plan-platform-icon">🛍️</div>
+        <h3>Meesho, Amazon &amp;<br>Flipkart Mastery Course</h3>
+        <div class="plan-price"><span class="currency">₹</span>299</div>
+        <div class="plan-old-price">One-Time · Only ₹299</div>
+        <p class="plan-desc">Learn how marketplaces work and understand online selling fundamentals.</p>
+        <ul>
+          <li>Marketplace Introduction</li>
+          <li>Seller Account Basics</li>
+          <li>Product Listing Guide</li>
+          <li>Order Management Basics</li>
+          <li>Pricing Strategy</li>
+          <li>Return &amp; Cancellation Basics</li>
+          <li>Business Policies</li>
+          <li>Marketplace Growth Tips</li>
+        </ul>
+        <a href="consultation.html">Get This Course →</a>
+      </div>
+
+      <!-- ADVANCE - Amazon Seller Mastery -->
+      <div class="plan-card course-card plan-course-amazon">
+        <div class="plan-tag">ADVANCE</div>
+        <div class="plan-platform-icon">🛒</div>
+        <h3>Amazon Seller<br>Mastery Course</h3>
+        <div class="plan-price"><span class="currency">₹</span>299</div>
+        <div class="plan-old-price">One-Time · Only ₹299</div>
+        <p class="plan-desc">Understand Amazon seller operations step by step.</p>
+        <ul>
+          <li>Amazon Seller Dashboard Tour</li>
+          <li>Product Listing Optimization</li>
+          <li>SEO Basics for Listings</li>
+          <li>Pricing Strategy</li>
+          <li>Buy Box Basics</li>
+          <li>Order Management</li>
+          <li>Customer Rating Management</li>
+          <li>Common Mistakes to Avoid</li>
+        </ul>
+        <a href="consultation.html">Get This Course →</a>
+      </div>
+
+      <!-- PREMIUM - Ecommerce Website Mastery -->
+      <div class="plan-card course-card plan-course-web diamond">
+        <div class="plan-tag">PREMIUM</div>
+        <div class="plan-platform-icon">🌐</div>
+        <h3>Ecommerce Website<br>Mastery Course</h3>
+        <div class="plan-price"><span class="currency">₹</span>399</div>
+        <div class="plan-old-price">One-Time · Only ₹399</div>
+        <p class="plan-desc">Learn the structure of a professional ecommerce website.</p>
+        <ul>
+          <li>Ecommerce Website Basics</li>
+          <li>Homepage Structure</li>
+          <li>Product Page Setup</li>
+          <li>Collection Management</li>
+          <li>Checkout Flow</li>
+          <li>Basic SEO</li>
+          <li>Order Process</li>
+          <li>Customer Journey</li>
+        </ul>
+        <a href="consultation.html">Get This Course →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- REVIEWS -->
 <section class="reviews-section section reveal" id="reviews">
   <div class="section-head">
@@ -1549,7 +1909,7 @@ footer { border-top: 1px solid rgba(247,184,36,0.18); background: linear-gradien
         <a href="https://www.instagram.com/dropshipguru.info/" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
         <a href="https://www.facebook.com/profile.php?id=61590783530879" target="_blank" rel="noopener" aria-label="Facebook">📘</a>
         <a href="https://youtube.com/@drop_guruship?si=fOIyn08aKyOjVrT6" target="_blank" rel="noopener" aria-label="YouTube">▶️</a>
-        <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+        <a href="https://wa.me/917428329102" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
         <a href="https://t.me/dropshipguru" target="_blank" rel="noopener" aria-label="Telegram">✈️</a>
       </div>
     </div>
@@ -1558,11 +1918,12 @@ footer { border-top: 1px solid rgba(247,184,36,0.18); background: linear-gradien
     <div class="footer-col">
       <h4>Quick Links</h4>
       <ul>
-        <li><a href="#products">Products</a>
-    <a href="#why-us">Why Us</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#why-us">Why Us</a></li>
         <li><a href="#categories">Categories</a></li>
         <li><a href="#roadmap">Roadmap</a></li>
         <li><a href="#plans">Pricing Plans</a></li>
+        <li><a href="#courses">Mastery Courses</a></li>
         <li><a href="#reviews">Reviews</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
@@ -1584,7 +1945,7 @@ footer { border-top: 1px solid rgba(247,184,36,0.18); background: linear-gradien
     <div class="footer-col">
       <h4>Contact Us</h4>
       <ul>
-        <li><a href="https://wa.me/91XXXXXXXXXX" target="_blank">💬 WhatsApp Us</a></li>
+        <li><a href="https://wa.me/917428329102" target="_blank">💬 WhatsApp Us</a></li>
         <li><a href="mailto:Support@DropshipGuru.info">📧 Email Support</a></li>
         <li><a href="https://www.instagram.com/dropshipguru.info/" target="_blank">📸 Instagram</a></li>
         <li><a href="https://www.facebook.com/profile.php?id=61590783530879" target="_blank">📘 Facebook</a></li>
@@ -1633,6 +1994,7 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 (function(){
   let t = 23*3600 + 59*60 + 59;
   const el = document.getElementById('timer');
+  const el2 = document.getElementById('timer2');
   setInterval(() => {
     if(t <= 0) t = 23*3600+59*60+59;
     t--;
@@ -1640,6 +2002,7 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     const m = String(Math.floor((t%3600)/60)).padStart(2,'0');
     const s = String(t%60).padStart(2,'0');
     if(el) el.textContent = h+':'+m+':'+s;
+    if(el2) el2.textContent = h+':'+m+':'+s;
   }, 1000);
 })();
 // Cursor glow follow
@@ -1706,6 +2069,47 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     requestAnimationFrame(draw);
   }
   addEventListener('resize', resize); init(); draw();
+})();
+
+// Live activity toast (urgency / social proof)
+(function(){
+  const toast = document.getElementById('activityToast');
+  const textEl = document.getElementById('activityText');
+  if(!toast || !textEl) return;
+  const names = ['Rohan from Delhi','Priya from Mumbai','Aman from Jaipur','Sneha from Pune','Vikram from Surat','Anjali from Lucknow','Karan from Indore','Neha from Ahmedabad','Suresh from Patna','Ritu from Chandigarh'];
+  const actions = [
+    'just enrolled in the Instagram &amp; Facebook Mastery Course',
+    'just purchased the WhatsApp Business Mastery Course',
+    'just booked a Free Consultation call',
+    'just started the Amazon Seller Mastery Course',
+    'just got their Ecommerce Website built',
+    'just claimed the Meesho, Amazon &amp; Flipkart Mastery Course',
+    'just upgraded to the Growth plan'
+  ];
+  const times = ['Just now','1 minute ago','2 minutes ago','3 minutes ago','5 minutes ago','8 minutes ago'];
+  function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+  function showToast(){
+    textEl.innerHTML = '<b>'+pick(names)+'</b> '+pick(actions)+'<span>'+pick(times)+'</span>';
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 5000);
+  }
+  setTimeout(showToast, 4000);
+  setInterval(showToast, 14000);
+})();
+
+// Seats counter — slowly ticks down to create urgency
+(function(){
+  const el = document.querySelector('.seats-count');
+  const bar = document.querySelector('.seats-progress span');
+  if(!el) return;
+  let seats = 14;
+  setInterval(() => {
+    if(seats > 3){
+      seats--;
+      el.textContent = seats + ' / 100';
+      if(bar) bar.style.width = (100 - seats) + '%';
+    }
+  }, 45000);
 })();
 
 </script>
