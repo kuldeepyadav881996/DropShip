@@ -2700,321 +2700,354 @@ footer::before {
     </div>
   </div>
 
-  <!-- Footer Bottom Bar -->
+  <!-- ========== UPDATED FOOTER — Dropship Guru ========== -->
+<style>
+footer {
+  background: #05080f;
+  color: #a0aec0;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.footer-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 64px 24px 40px;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.3fr;
+  gap: 40px 32px;
+}
+
+/* Brand */
+.footer-brand {}
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  margin-bottom: 14px;
+}
+.footer-logo img {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  object-fit: cover;
+  background: #05070c;
+  display: block;
+}
+.footer-logo span {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.3px;
+}
+.footer-logo span b { color: #f7b824; }
+
+.footer-tagline {
+  color: #6b7a93;
+  font-size: 13.5px;
+  max-width: 270px;
+  margin-bottom: 22px;
+  line-height: 1.65;
+}
+
+/* ---- Social Icons — real style dark rounded squares ---- */
+.footer-socials {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.footer-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  background: #0e1420;
+  border: 1px solid rgba(255,255,255,0.07);
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.22s, color 0.22s, border-color 0.22s, transform 0.18s, box-shadow 0.22s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+}
+
+/* Default — brand colour always visible */
+.footer-socials a.ig { background: rgba(193,53,132,0.22); border-color: rgba(193,53,132,0.45); color: #e1609f; }
+.footer-socials a.fb { background: rgba(24,119,242,0.20); border-color: rgba(24,119,242,0.45); color: #5b9bf5; }
+.footer-socials a.yt { background: rgba(255,0,0,0.18);   border-color: rgba(255,0,0,0.40);   color: #ff4d4d; }
+.footer-socials a.wa { background: rgba(37,211,102,0.18); border-color: rgba(37,211,102,0.40); color: #3ddb7d; }
+.footer-socials a.tg { background: rgba(34,158,217,0.18); border-color: rgba(34,158,217,0.40); color: #4bbfe8; }
+
+/* Hover — full brand colour */
+.footer-socials a:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,0.45); }
+.footer-socials a.ig:hover { background:#c13584; border-color:#c13584; color:#fff; box-shadow: 0 6px 20px rgba(193,53,132,0.45); }
+.footer-socials a.fb:hover { background:#1877f2; border-color:#1877f2; color:#fff; box-shadow: 0 6px 20px rgba(24,119,242,0.45); }
+.footer-socials a.yt:hover { background:#ff0000; border-color:#ff0000; color:#fff; box-shadow: 0 6px 20px rgba(255,0,0,0.45); }
+.footer-socials a.wa:hover { background:#25d366; border-color:#25d366; color:#fff; box-shadow: 0 6px 20px rgba(37,211,102,0.45); }
+.footer-socials a.tg:hover { background:#229ed9; border-color:#229ed9; color:#fff; box-shadow: 0 6px 20px rgba(34,158,217,0.45); }
+
+/* Columns */
+.footer-col h4 {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: #f7b824;
+  margin: 0 0 18px;
+}
+.footer-col ul {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.footer-col ul li a {
+  color: #6b7a93;
+  text-decoration: none;
+  font-size: 13.5px;
+  transition: color 0.18s;
+}
+.footer-col ul li a:hover { color: #e2e8f0; }
+
+/* Contact items */
+.footer-contact-list {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.fci {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.fci-icon {
+  width: 34px; height: 34px;
+  border-radius: 9px;
+  background: #0e1420;
+  border: 1px solid rgba(255,255,255,0.07);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #f7b824;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+.fci-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.fci-label {
+  font-size: 10.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #3d4f6a;
+}
+.fci-value {
+  font-size: 13px;
+  color: #8899bb;
+  line-height: 1.5;
+}
+.fci-value a {
+  color: #8899bb;
+  text-decoration: none;
+  transition: color 0.18s;
+}
+.fci-value a:hover { color: #f7b824; }
+
+/* Bottom bar */
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 18px 24px;
+}
+.footer-bottom-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.footer-bottom-inner p {
+  margin: 0;
+  font-size: 12.5px;
+  color: #3d4a5c;
+}
+.footer-bottom-inner p b { color: #f7b824; }
+.footer-badge {
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 4px 13px;
+  border-radius: 999px;
+  background: rgba(247,184,36,0.08);
+  border: 1px solid rgba(247,184,36,0.2);
+  color: #f7b824;
+  letter-spacing: 0.04em;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .footer-inner { grid-template-columns: 1fr; padding: 44px 20px 28px; gap: 32px; }
+  .footer-bottom-inner { flex-direction: column; align-items: flex-start; gap: 10px; }
+}
+</style>
+
+<footer>
+  <div class="footer-inner">
+
+    <!-- ① Brand -->
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">
+        <img src="logo.png" alt="Dropship Guru Logo"
+          onerror="this.outerHTML='<span style=&quot;width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#f7b824,#14a8ff);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;color:#06110b;&quot;>DG</span>'">
+        <span>Dropship <b>Guru</b></span>
+      </a>
+      <p class="footer-tagline">India's #1 Dropshipping system. We help beginners build profitable stores — learn, launch &amp; earn online.</p>
+
+      <!-- Social Icons — real branded style -->
+      <div class="footer-socials">
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/dropshipguru.info/" target="_blank" rel="noopener" aria-label="Instagram" class="ig">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/profile.php?id=61590783530879" target="_blank" rel="noopener" aria-label="Facebook" class="fb">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </a>
+
+        <!-- YouTube -->
+        <a href="https://youtube.com/@drop_guruship?si=fOIyn08aKyOjVrT6" target="_blank" rel="noopener" aria-label="YouTube" class="yt">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
+            <polygon fill="#0e1420" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/>
+          </svg>
+        </a>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/917428329102" target="_blank" rel="noopener" aria-label="WhatsApp" class="wa">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+        </a>
+
+        <!-- Telegram -->
+        <a href="https://t.me/dropshipguru" target="_blank" rel="noopener" aria-label="Telegram" class="tg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+          </svg>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- ② Quick Links -->
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#why-us">Why Us</a></li>
+        <li><a href="#categories">Categories</a></li>
+        <li><a href="#roadmap">Roadmap</a></li>
+        <li><a href="#plans">Pricing Plans</a></li>
+        <li><a href="#courses">Mastery Courses</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+
+    <!-- ③ Services -->
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="consultation.html">Free Consultation</a></li>
+        <li><a href="consultation.html">Store Setup</a></li>
+        <li><a href="consultation.html">Product Research</a></li>
+        <li><a href="consultation.html">Ads Setup</a></li>
+        <li><a href="consultation.html">Mentorship</a></li>
+      </ul>
+    </div>
+
+    <!-- ④ Contact -->
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <ul class="footer-contact-list">
+
+        <!-- Address -->
+        <li>
+          <div class="fci">
+            <div class="fci-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div class="fci-text">
+              <span class="fci-label">Address</span>
+              <span class="fci-value">Webel.io Tech Garden,<br>Gurugram, Haryana 122102</span>
+            </div>
+          </div>
+        </li>
+
+        <!-- Phone -->
+        <li>
+          <div class="fci">
+            <div class="fci-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.07 10.8 19.79 19.79 0 0 1 .4 2.14 2 2 0 0 1 2.38 0h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L6.09 7.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <div class="fci-text">
+              <span class="fci-label">Phone No.</span>
+              <span class="fci-value"><a href="tel:+917428329102">+91 7428329102</a></span>
+            </div>
+          </div>
+        </li>
+
+        <!-- Email -->
+        <li>
+          <div class="fci">
+            <div class="fci-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div class="fci-text">
+              <span class="fci-label">Email ID</span>
+              <span class="fci-value"><a href="mailto:support@dropshipguru.info">support@dropshipguru.info</a></span>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+
+  </div><!-- /.footer-inner -->
+
+  <!-- Bottom Bar -->
   <div class="footer-bottom">
     <div class="footer-bottom-inner">
-      <p>© 2025 Dropship <b>Guru</b>. All rights reserved. Made with ❤️ in India.</p>
-      <span class="footer-badge">Proudly Indian</span>
+      <p>© 2025 Dropship <b>Guru</b>. All rights reserved.</p>
+      <span class="footer-badge">🇮🇳 Proudly Indian</span>
     </div>
   </div>
 </footer>
-
-<script>
-// Preloader
-window.addEventListener('load', () => {
-  setTimeout(() => document.getElementById('preloader').classList.add('hidden'), 600);
-});
-// Mobile menu
-document.getElementById('menuBtn').addEventListener('click', () => {
-  document.getElementById('navMenu').classList.toggle('open');
-});
-// FAQ accordion
-document.querySelectorAll('.faq-item button').forEach(btn => {
-  btn.addEventListener('click', () => btn.parentElement.classList.toggle('open'));
-});
-// Reveal on scroll — with stagger
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if(e.isIntersecting) {
-      const siblings = e.target.parentElement.querySelectorAll('.reveal');
-      siblings.forEach((el, i) => {
-        setTimeout(() => el.classList.add('visible'), i * 80);
-      });
-      e.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-// Countdown timer
-(function(){
-  let t = 23*3600 + 59*60 + 59;
-  const el = document.getElementById('timer');
-  const el2 = document.getElementById('timer2');
-  setInterval(() => {
-    if(t <= 0) t = 23*3600+59*60+59;
-    t--;
-    const h = String(Math.floor(t/3600)).padStart(2,'0');
-    const m = String(Math.floor((t%3600)/60)).padStart(2,'0');
-    const s = String(t%60).padStart(2,'0');
-    if(el) el.textContent = h+':'+m+':'+s;
-    if(el2) el2.textContent = h+':'+m+':'+s;
-  }, 1000);
-})();
-// Cursor glow follow
-(function(){
-  const glow = document.createElement('div');
-  glow.className = 'cursor-glow';
-  document.body.appendChild(glow);
-  document.addEventListener('mousemove', e => {
-    glow.style.left = e.clientX + 'px';
-    glow.style.top = e.clientY + 'px';
-  });
-})();
-
-
-(function(){
-  const canvas = document.getElementById('constellation-bg');
-  const ctx = canvas.getContext('2d');
-  let W, H, nodes = [];
-  const COUNT = 90;
-  const CONNECT_DIST = 150;
-  const COLORS = ['rgba(247,184,36,', 'rgba(20,168,255,', 'rgba(139,116,255,'];
-  function resize(){ W = canvas.width = innerWidth; H = canvas.height = innerHeight; }
-  function makeNode(){
-    const ci = Math.floor(Math.random() * COLORS.length);
-    return {
-      x: Math.random()*W, y: Math.random()*H,
-      vx:(Math.random()-0.5)*0.4, vy:(Math.random()-0.5)*0.4,
-      r: Math.random()*2+0.8, pulse: Math.random()*Math.PI*2,
-      color: COLORS[ci], solidColor: COLORS[ci].replace('rgba(','').replace(',','').split(',').slice(0,3).join(',')
-    };
-  }
-  function init(){ resize(); nodes = Array.from({length: COUNT}, makeNode); }
-  function draw(){
-    ctx.clearRect(0,0,W,H);
-    nodes.forEach(n => {
-      n.x+=n.vx; n.y+=n.vy; n.pulse+=0.018;
-      if(n.x<0||n.x>W)n.vx*=-1; if(n.y<0||n.y>H)n.vy*=-1;
-    });
-    for(let i=0;i<nodes.length;i++) {
-      for(let j=i+1;j<nodes.length;j++){
-        const dx=nodes[i].x-nodes[j].x, dy=nodes[i].y-nodes[j].y;
-        const d=Math.sqrt(dx*dx+dy*dy);
-        if(d<CONNECT_DIST){
-          const a=(1-d/CONNECT_DIST)*0.45;
-          const grd = ctx.createLinearGradient(nodes[i].x,nodes[i].y,nodes[j].x,nodes[j].y);
-          grd.addColorStop(0, nodes[i].color+a+')');
-          grd.addColorStop(1, nodes[j].color+a+')');
-          ctx.beginPath(); ctx.moveTo(nodes[i].x,nodes[i].y); ctx.lineTo(nodes[j].x,nodes[j].y);
-          ctx.strokeStyle=grd; ctx.lineWidth=0.6; ctx.stroke();
-        }
-      }
-    }
-    nodes.forEach(n => {
-      const g=0.6+0.4*Math.sin(n.pulse);
-      const glowR = n.r*g*3;
-      const glowGrad = ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,glowR);
-      glowGrad.addColorStop(0, n.color+'0.4)');
-      glowGrad.addColorStop(1, n.color+'0)');
-      ctx.beginPath(); ctx.arc(n.x,n.y,glowR,0,Math.PI*2);
-      ctx.fillStyle=glowGrad; ctx.fill();
-      ctx.beginPath(); ctx.arc(n.x,n.y,n.r*g,0,Math.PI*2);
-      ctx.fillStyle=n.color+(0.7+0.3*g)+')'; ctx.fill();
-    });
-    requestAnimationFrame(draw);
-  }
-  addEventListener('resize', resize); init(); draw();
-})();
-
-// Live activity toast (urgency / social proof)
-(function(){
-  const toast = document.getElementById('activityToast');
-  const textEl = document.getElementById('activityText');
-  if(!toast || !textEl) return;
-  const names = ['Rohan from Delhi','Priya from Mumbai','Aman from Jaipur','Sneha from Pune','Vikram from Surat','Anjali from Lucknow','Karan from Indore','Neha from Ahmedabad','Suresh from Patna','Ritu from Chandigarh'];
-  const actions = [
-    'just enrolled in the Instagram &amp; Facebook Mastery Course',
-    'just purchased the WhatsApp Business Mastery Course',
-    'just booked a Free Consultation call',
-    'just started the Amazon Seller Mastery Course',
-    'just got their Ecommerce Website built',
-    'just claimed the Meesho, Amazon &amp; Flipkart Mastery Course',
-    'just upgraded to the Growth plan'
-  ];
-  const times = ['Just now','1 minute ago','2 minutes ago','3 minutes ago','5 minutes ago','8 minutes ago'];
-  function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
-  function showToast(){
-    textEl.innerHTML = '<b>'+pick(names)+'</b> '+pick(actions)+'<span>'+pick(times)+'</span>';
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 5000);
-  }
-  setTimeout(showToast, 4000);
-  setInterval(showToast, 14000);
-})();
-
-// Seats counter — slowly ticks down to create urgency
-(function(){
-  const el = document.querySelector('.seats-count');
-  const bar = document.querySelector('.seats-progress span');
-  if(!el) return;
-  let seats = 14;
-  setInterval(() => {
-    if(seats > 3){
-      seats--;
-      el.textContent = seats + ' / 100';
-      if(bar) bar.style.width = (100 - seats) + '%';
-    }
-  }, 45000);
-})();
-
-// Premium cursor glow — soft light follows pointer (desktop only)
-(function(){
-  if (window.matchMedia('(pointer: coarse)').matches) return; // skip on touch devices
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; // respect accessibility preference
-  const glow = document.createElement('div');
-  glow.id = 'cursorGlow';
-  glow.style.cssText = 'position:fixed;top:0;left:0;width:460px;height:460px;border-radius:50%;pointer-events:none;z-index:0;transform:translate(-50%,-50%);background:radial-gradient(circle, rgba(247,184,36,0.07), rgba(247,184,36,0.02) 45%, transparent 70%);transition:opacity 0.4s ease;opacity:0;will-change:transform;';
-  document.body.appendChild(glow);
-  let mx = 0, my = 0, curX = 0, curY = 0, raf = null;
-  function render(){
-    curX += (mx - curX) * 0.12;
-    curY += (my - curY) * 0.12;
-    glow.style.transform = `translate(${curX}px, ${curY}px) translate(-50%,-50%)`;
-    raf = requestAnimationFrame(render);
-  }
-  window.addEventListener('mousemove', (e) => {
-    mx = e.clientX; my = e.clientY;
-    glow.style.opacity = '1';
-    if (!raf) raf = requestAnimationFrame(render);
-  }, { passive: true });
-  document.addEventListener('mouseleave', () => { glow.style.opacity = '0'; });
-})();
-
-// Stats count-up animation
-(function(){
-  const counters = document.querySelectorAll('[data-count-to]');
-  if (!counters.length) return;
-  function animateCounter(el){
-    const target = parseFloat(el.getAttribute('data-count-to'));
-    const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
-    const prefix = el.getAttribute('data-prefix') || '';
-    const suffix = el.getAttribute('data-suffix') || '';
-    const duration = 1400;
-    const start = performance.now();
-    function tick(now){
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const value = target * eased;
-      const formatted = decimals > 0 ? value.toFixed(decimals) : Math.round(value).toLocaleString('en-IN');
-      el.textContent = prefix + formatted + suffix;
-      if (progress < 1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-  }
-  const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting){
-        counters.forEach(animateCounter);
-        statsObserver.disconnect();
-      }
-    });
-  }, { threshold: 0.4 });
-  const band = document.querySelector('.stats-band');
-  if (band) statsObserver.observe(band);
-})();
-
-// ===== Header scroll-shrink effect =====
-(function(){
-  const header = document.querySelector('.site-header');
-  if (!header) return;
-  let ticking = false;
-  function update(){
-    if (window.scrollY > 40) header.classList.add('scrolled');
-    else header.classList.remove('scrolled');
-    ticking = false;
-  }
-  window.addEventListener('scroll', () => {
-    if (!ticking) { requestAnimationFrame(update); ticking = true; }
-  }, { passive: true });
-  update();
-})();
-
-// ===== Premium 3D Tilt + Magnetic Interaction Engine (site-wide) =====
-(function(){
-  if (window.matchMedia('(pointer: coarse)').matches) return; // skip touch devices
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; // respect accessibility preference
-
-  // Light-sweep effect: inject a span into each card, skip if card already clips overflow in a way that would hide the sweep
-  const sweepSelectors = [
-    '.category-card', '.banner-category-card', '.jewel-card', '.audience-card',
-    '.audience-card-2', '.step', '.plan-card', '.review-card', '.faq-item', '.hf-card'
-  ];
-  document.querySelectorAll(sweepSelectors.join(',')).forEach(el => {
-    if (getComputedStyle(el).position === 'static') el.style.position = 'relative';
-    el.classList.add('sweep-host');
-    const span = document.createElement('span');
-    span.className = 'sweep-light';
-    el.appendChild(span);
-  });
-
-  // 3D tilt for cards
-  const tiltSelectors = [
-    '.category-card', '.banner-category-card', '.jewel-card', '.audience-card',
-    '.audience-card-2', '.step', '.plan-card', '.review-card', '.faq-item',
-    '.diff-card', '.ps-problem', '.ps-solution', '.hf-card'
-  ];
-  const tiltEls = document.querySelectorAll(tiltSelectors.join(','));
-  tiltEls.forEach(el => {
-    el.style.transformStyle = 'preserve-3d';
-    el.style.willChange = 'transform';
-    let raf = null;
-    let curX = 0, curY = 0, targetX = 0, targetY = 0;
-    function animate(){
-      curX += (targetX - curX) * 0.18;
-      curY += (targetY - curY) * 0.18;
-      el.style.transform = `perspective(900px) rotateX(${curY}deg) rotateY(${curX}deg) translateZ(0)`;
-      if (Math.abs(targetX - curX) > 0.01 || Math.abs(targetY - curY) > 0.01) {
-        raf = requestAnimationFrame(animate);
-      } else {
-        raf = null;
-      }
-    }
-    function onMove(e){
-      const r = el.getBoundingClientRect();
-      const px = (e.clientX - r.left) / r.width;
-      const py = (e.clientY - r.top) / r.height;
-      targetY = (py - 0.5) * -5;
-      targetX = (px - 0.5) * 5;
-      if (!raf) raf = requestAnimationFrame(animate);
-    }
-    function onLeave(){
-      targetX = 0; targetY = 0;
-      if (!raf) raf = requestAnimationFrame(animate);
-    }
-    el.addEventListener('mousemove', onMove, { passive: true });
-    el.addEventListener('mouseleave', onLeave);
-  });
-
-  // Magnetic buttons
-  const magnetic = document.querySelectorAll('.btn.primary, .btn.ghost, .nav-cta, .tool-chips a');
-  magnetic.forEach(el => {
-    let raf = null;
-    let curX = 0, curY = 0, targetX = 0, targetY = 0;
-    function animate(){
-      curX += (targetX - curX) * 0.22;
-      curY += (targetY - curY) * 0.22;
-      el.style.transform = `translate(${curX}px, ${curY}px)`;
-      if (Math.abs(targetX - curX) > 0.05 || Math.abs(targetY - curY) > 0.05) {
-        raf = requestAnimationFrame(animate);
-      } else {
-        raf = null;
-      }
-    }
-    function onMove(e){
-      const r = el.getBoundingClientRect();
-      targetX = (e.clientX - r.left - r.width / 2) * 0.16;
-      targetY = (e.clientY - r.top - r.height / 2) * 0.26;
-      if (!raf) raf = requestAnimationFrame(animate);
-    }
-    function onLeave(){
-      targetX = 0; targetY = 0;
-      if (!raf) raf = requestAnimationFrame(animate);
-    }
-    el.addEventListener('mousemove', onMove, { passive: true });
-    el.addEventListener('mouseleave', onLeave);
-  });
-})();
-
-</script>
-</body>
-</html>
