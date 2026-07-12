@@ -2,7 +2,7 @@
   "use strict";
 
   var GOOGLE_SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbwmODHzFijqCcZuCJbs0z499n5NYueKGOPy0k0tEF7iTWqSTmUZgaGGhbxsaIxRLcIoYw/exec";
+    "https://script.google.com/a/macros/dropshipguru.info/s/AKfycbzpPiH8gpzHvk9-AEHEKDq5WT7XnEsfJVIIz-ki3-BCprd4xLGaNQ2FJFHoyfy-qtlafQ/exec";
 
   var PAYLOAD_KEYS = [
     "fullName",
@@ -158,12 +158,18 @@
 
   function submitToGoogleSheet(formData) {
     var payload = normalizePayload(formData);
+    // Send the payload as URL-encoded form fields. Passing a URLSearchParams body
+    // makes fetch set Content-Type: application/x-www-form-urlencoded automatically
+    // — a CORS-SAFELISTED value — and we set NO custom headers, so this stays a
+    // "simple" request and the browser never fires a CORS preflight (OPTIONS).
+    // Every field is preserved and is readable server-side via e.parameter.<field>.
+    var params = new URLSearchParams();
+    Object.keys(payload).forEach(function (key) {
+      params.append(key, payload[key]);
+    });
     return fetch(GOOGLE_SCRIPT_URL, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(payload)
+      body: params
     }).then(function (res) {
       return res.text().then(function (text) {
         var body = parseResponseBody(text);

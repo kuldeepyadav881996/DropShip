@@ -114,22 +114,6 @@ input,select,textarea{font-family:inherit;outline:none}
 }
 .urgency-dot{width:6px;height:6px;border-radius:50%;background:#ff3d5a;animation:dot-pulse 1.5s ease-in-out infinite}
 
-/* ═══════════════════════════════════════════
-   LIVE TICKER
-═══════════════════════════════════════════ */
-.live-ticker{
-  display:flex;align-items:center;gap:10px;
-  width:min(1140px,100%);margin:0 auto 20px;
-  padding:9px 16px;border-radius:50px;
-  background:rgba(255,255,255,0.022);border:1px solid rgba(247,184,36,0.14);overflow:hidden;
-}
-.ticker-dot{width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0;box-shadow:0 0 8px var(--green);animation:dot-pulse 2s ease-in-out infinite}
-.ticker-label{font-size:11px;font-weight:800;color:var(--green);text-transform:uppercase;letter-spacing:0.08em;flex-shrink:0}
-.ticker-track{flex:1;overflow:hidden;position:relative;height:18px}
-.ticker-inner{display:flex;gap:60px;white-space:nowrap;animation:ticker-scroll 20s linear infinite}
-.ticker-item{font-size:12px;color:var(--text2);font-weight:500;white-space:nowrap}
-.ticker-item b{color:var(--gold)}
-@keyframes ticker-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 @keyframes dot-pulse{0%,100%{opacity:1;transform:scale(1);box-shadow:0 0 8px var(--green)}50%{opacity:0.4;transform:scale(0.65);box-shadow:none}}
 
 /* ═══════════════════════════════════════════
@@ -701,7 +685,6 @@ input,select,textarea{font-family:inherit;outline:none}
 .toast-text b{color:var(--gold);display:block;font-size:12.5px}
 .toast-text span{color:var(--muted2);font-size:11.5px}
 .toast-time{color:var(--muted);font-size:10.5px;white-space:nowrap;margin-left:4px}
-
 /* ═══════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════ */
@@ -722,7 +705,6 @@ input,select,textarea{font-family:inherit;outline:none}
   .float-wa small{display:none}
   .trust-row{grid-template-columns:1fr 1fr}
   .prog-cards{grid-template-columns:1fr}
-  .live-ticker{display:none}
   .toast-container{left:12px;bottom:80px}
   .cta-band-btns{flex-direction:column}
   .urgency-bar{gap:8px}
@@ -1604,7 +1586,6 @@ footer { background: #0E1013 !important; border-top: none !important; }
 
 /* Hide clutter */
 .lead-page .urgency-bar,
-.lead-page .live-ticker,
 .lead-page .form-hero,
 .lead-page .results-strip,
 .lead-page .hiw-section,
@@ -2229,30 +2210,6 @@ footer { background: #0E1013 !important; border-top: none !important; }
     <span class="urgency-fire">🔥</span>
     <span class="urgency-text"><b>HURRY UP!</b> Only 7 seats remaining for this month's batch</span>
     <div class="urgency-seats"><span class="urgency-dot"></span> 7 Seats Left</div>
-  </div>
-
-  <!-- LIVE TICKER -->
-  <div class="live-ticker reveal" data-d="1">
-    <div class="ticker-dot"></div>
-    <div class="ticker-label">Live</div>
-    <div class="ticker-track">
-      <div class="ticker-inner">
-        <span class="ticker-item">🔥 <b>Rahul from Delhi</b> just joined Amazon.in Program</span>
-        <span class="ticker-item">✅ <b>Priya from Mumbai</b> registered for Webinar</span>
-        <span class="ticker-item">🚀 <b>Arjun from Bangalore</b> started Meesho Program</span>
-        <span class="ticker-item">💎 <b>Sneha from Pune</b> joined One Year Support</span>
-        <span class="ticker-item">⭐ <b>Vikram from Jaipur</b> enrolled in Flipkart Plan</span>
-        <span class="ticker-item">💰 <b>Neha from Surat</b> earned ₹45,000 this month</span>
-        <span class="ticker-item">🎯 <b>Amit from Lucknow</b> got first order in 3 days</span>
-        <span class="ticker-item">🔥 <b>Rahul from Delhi</b> just joined Amazon.in Program</span>
-        <span class="ticker-item">✅ <b>Priya from Mumbai</b> registered for Webinar</span>
-        <span class="ticker-item">🚀 <b>Arjun from Bangalore</b> started Meesho Program</span>
-        <span class="ticker-item">💎 <b>Sneha from Pune</b> joined One Year Support</span>
-        <span class="ticker-item">⭐ <b>Vikram from Jaipur</b> enrolled in Flipkart Plan</span>
-        <span class="ticker-item">💰 <b>Neha from Surat</b> earned ₹45,000 this month</span>
-        <span class="ticker-item">🎯 <b>Amit from Lucknow</b> got first order in 3 days</span>
-      </div>
-    </div>
   </div>
 
   <!-- HERO -->
@@ -2941,7 +2898,11 @@ footer { background: #0E1013 !important; border-top: none !important; }
 <script>
 /* ═══ 1. CONSTELLATION ═══ */
 (function(){
-  const canvas=document.getElementById('constellation-bg'),ctx=canvas.getContext('2d');
+  const canvas=document.getElementById('constellation-bg');
+  if(!canvas) return;
+  /* Mobile perf: skip the constellation rAF loop on phones (desktop unchanged) */
+  if(window.matchMedia('(max-width: 767.98px)').matches){ canvas.style.display='none'; return; }
+  const ctx=canvas.getContext('2d');
   let W,H,nodes=[];
   const COUNT=85,DIST=165,GOLD='rgba(247,184,36,',GS='#f7b824';
   function resize(){W=canvas.width=innerWidth;H=canvas.height=innerHeight}
@@ -3096,33 +3057,6 @@ function setAnimVal(id,text){
 document.querySelectorAll('.prog-card').forEach(c=>{
   c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();c.click()}});
 });
-
-/* ═══ 9. SOCIAL PROOF TOASTS ═══ */
-const toastData=[
-  {name:'Rahul S.',city:'Delhi',action:'joined Amazon.in Program',emoji:'🛒'},
-  {name:'Priya M.',city:'Mumbai',action:'registered for Webinar',emoji:'🎓'},
-  {name:'Arjun K.',city:'Bangalore',action:'started Meesho Program',emoji:'🛍️'},
-  {name:'Sneha R.',city:'Pune',action:'joined One Year Support',emoji:'🚀'},
-  {name:'Vikram T.',city:'Jaipur',action:'enrolled in Flipkart Plan',emoji:'⚡'},
-  {name:'Anita B.',city:'Chennai',action:'earning ₹55,000/month',emoji:'💰'},
-  {name:'Rohan G.',city:'Hyderabad',action:'got first order in 3 days',emoji:'🎯'},
-  {name:'Meena J.',city:'Ahmedabad',action:'joined Website Store Plan',emoji:'🌐'},
-];
-const toastContainer=document.getElementById('toastContainer');
-let toastIdx=0;
-function showToast(){
-  const d=toastData[toastIdx%toastData.length];toastIdx++;
-  const mins=Math.floor(Math.random()*9)+1;
-  const initials=d.name.split(' ').map(w=>w[0]).join('');
-  const toast=document.createElement('div');
-  toast.className='toast';
-  toast.innerHTML=`<div class="toast-avatar">${initials}</div><div class="toast-text"><b>${d.emoji} ${d.name} from ${d.city}</b><span>${d.action}</span></div><span class="toast-time">${mins}m ago</span>`;
-  toastContainer.appendChild(toast);
-  requestAnimationFrame(()=>requestAnimationFrame(()=>toast.classList.add('show')));
-  setTimeout(()=>{toast.classList.remove('show');setTimeout(()=>toast.remove(),500)},4500);
-}
-setTimeout(()=>{showToast();setInterval(showToast,7000)},2500);
-
 
 /* ═══ CONSULTATION — plan from URL & form steps ═══ */
 const CONSULT_PLANS={
@@ -3766,6 +3700,52 @@ setInterval(() => slideTesti(1), 6000);
   }
 }
 
+/* ══════════════════════════════════════════════════════════
+   MOBILE PERFORMANCE PASS — applies ONLY at ≤767.98px.
+   Desktop (≥768px) rendering is completely unaffected.
+   ══════════════════════════════════════════════════════════ */
+@media (max-width: 767.98px){
+  /* (1)(2)(3) Disable decorative floating / background-glow / particle animations */
+  #constellation-bg{ display:none !important; }
+  .ambient-scene, .ambient-scene *,
+  .spotlight, .orb, .noise-layer,
+  .float-wa, .hf-card, .hero-glow-blob,
+  [class*="ambient-"], [class*="hero-glow"], [class*="hero-bg-"]{
+    animation: none !important;
+  }
+  .ambient-particles, .ambient-particles > i{ display:none !important; }
+
+  /* (4) Remove GPU-heavy backdrop-filter; tame decorative blur */
+  *{ backdrop-filter:none !important; -webkit-backdrop-filter:none !important; }
+  .orb, .spotlight, .ambient-blob, .hero-glow-blob, [class*="hero-glow"]{ filter:none !important; }
+
+  /* (5) Drop the most expensive decorative shadows (paint cost) */
+  .orb, .spotlight, .ambient-blob, .hero-glow-blob{ box-shadow:none !important; }
+
+  /* (1)(3)(9) Neutralise EVERY remaining CSS animation on mobile.
+     Pattern: jump each animation to its end-state instantly (fill-mode:both,
+     1 iteration, ~0ms) so content stays fully visible but nothing loops/repaints.
+     Reveal-on-scroll uses CSS transitions (not @keyframes), so it is unaffected. */
+  *, *::before, *::after{
+    animation-duration:0.001ms !important;
+    animation-delay:0ms !important;
+    animation-iteration-count:1 !important;
+    animation-fill-mode:both !important;
+  }
+  /* Continuous marquee (income row): stop AND reset to natural start position */
+  .income-track, [class*="income-scroll"]{ animation:none !important; transform:none !important; }
+  /* Class/ID-level !important shorthands outrank the universal reset above,
+     so kill those specific looping shines with matching specificity (appended later). */
+  .btn.primary, .nav-cta, .submit-btn, .cta-btn, .hero .btn.primary,
+  #plans.plans-section::before{ animation:none !important; }
+
+  /* (13) Avoid needless layer promotion → lower GPU memory */
+  *{ will-change:auto !important; }
+
+  /* (12)(13)(15) No horizontal overflow; every element fits the viewport */
+  html, body{ overflow-x:hidden !important; max-width:100% !important; }
+  img, svg, video, canvas, iframe{ max-width:100% !important; }
+}
 </style>
 <script>
 /* PREMIUM MOTION — micro-interactions only */
@@ -4085,5 +4065,35 @@ setInterval(() => slideTesti(1), 6000);
 </div>
 
   <script src="brand-icons.js" defer></script>
+  <script>
+  /* ── Mobile-only runtime perf (≤767.98px). Desktop is untouched. ── */
+  (function(){
+    if (!window.matchMedia || !window.matchMedia('(max-width: 767.98px)').matches) return;
+    var DECOR = '.orb,.spotlight,.float-wa,.hf-card,.hero-glow-blob,[class*="ambient-"],[class*="hero-glow"],[data-pause-offscreen]';
+    var nodes = [];
+    try { nodes = Array.prototype.slice.call(document.querySelectorAll(DECOR)); } catch(e){ return; }
+    function halve(v){
+      return v.split(',').map(function(part){
+        var m = part.trim().match(/^([\d.]+)(ms|s)$/);
+        if(!m) return part.trim();
+        return (parseFloat(m[1]) / 2) + m[2];
+      }).join(', ');
+    }
+    nodes.forEach(function(el){
+      try {
+        var d = getComputedStyle(el).animationDuration;
+        if (d && d !== '0s' && d !== '0ms') el.style.animationDuration = halve(d);
+      } catch(e){}
+    });
+    if ('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          en.target.style.animationPlayState = en.isIntersecting ? 'running' : 'paused';
+        });
+      }, { rootMargin: '80px 0px' });
+      nodes.forEach(function(el){ io.observe(el); });
+    }
+  })();
+  </script>
 </body>
 </html>
